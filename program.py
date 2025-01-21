@@ -12,8 +12,8 @@ root.title("Calories Burned Predictor")
 
 # Create entries for user input
 entries = []
-for i,name in enumerate(['Gender', 'Age', 'Height', 'Weight', 'Heart_Rate',
-       'Body_Temp']):
+for i,name in enumerate(['Gender (Male - 1 , Female - 0)', 'Age', 'Height (cm)', 'Weight (Kg)', 'Heart_Rate',
+       'Body_Temp (Celsius)']):
     tk.Label(root, text=name).grid(row=i, column=0)
     entry = tk.Entry(root)
     entry.grid(row=i, column=1)
