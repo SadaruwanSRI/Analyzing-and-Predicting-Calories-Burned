@@ -5,6 +5,7 @@ from tkinter import messagebox
 # Load the models
 poly_features = joblib.load('poly_features.pkl')
 poly_regressor_model = joblib.load('poly_regressor_model.pkl')
+sc_scaller = joblib.load('standard_scaler.pkl')
 
 # Create the main window
 root = tk.Tk()
@@ -39,13 +40,15 @@ def calculate():
         
         # Combine entry and checkbox values
         input_values = entry_values + checkbox_values
+
+        input_values[1:5] = sc_scaller.transform([input_values[1:5]])[0,:]
         
         # Transform the input values using the polynomial features
         transformed_values = poly_features.transform([input_values])
         
         # Predict the result using the regressor model
         result = poly_regressor_model.predict(transformed_values)
-        
+        print(result)
         # Display the result
         messagebox.showinfo("Prediction", f"Predicted Calories Burned: {result[0]}")
     except Exception as e:
