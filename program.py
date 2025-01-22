@@ -48,7 +48,6 @@ def calculate():
         
         # Predict the result using the regressor model
         result = poly_regressor_model.predict(transformed_values)
-        print(result)
         # Display the result
         messagebox.showinfo("Prediction", f"Predicted Calories Burned: {result[0]}")
     except Exception as e:
